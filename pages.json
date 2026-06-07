@@ -1,0 +1,9 @@
+@'
+{
+  "build_type": "legacy",
+  "source": {
+    "branch": "main",
+    "path": "/"
+  }
+}
+'@ | Out-File -Encoding utf8 pages.json
