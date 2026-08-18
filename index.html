@@ -20,6 +20,16 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Fonts: discovered in the HTML instead of via a CSS @import, so the
+         browser can start fetching them without waiting for our stylesheet.
+         Only the three weights actually used are requested. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    />
+
     <!-- Absolute URLs (required for link previews). Live site: https://jcamuenh.me -->
     <link rel="canonical" href="https://jcamuenh.me/" />
 
@@ -48,10 +58,25 @@
     <meta name="twitter:image" content="https://jcamuenh.me/og-image.png" />
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <script type="module" crossorigin src="/assets/index-ChZaFXLt.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-P2Uw_yEs.css">
+    <script type="module" crossorigin src="/assets/index-DfHo0-d0.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BAknAjtA.css">
   </head>
   <body>
     <div id="root"></div>
+    <!-- Apply the stored theme before first paint. Without this the page paints
+         light, then React flips the class, which both flashes and leaves any
+         transitioned colour stuck at the light value. -->
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem("theme");
+          var dark =
+            s === "dark" ||
+            (s !== "light" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
   </body>
 </html>
